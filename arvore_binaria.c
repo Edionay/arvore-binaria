@@ -44,11 +44,28 @@ int altura(arvore raiz)
     }
 }
 
+// 1. Visitar a raiz
+// 2. Percorrer sua sbárvore esquerda em pré-ordem
+// 3. Visitar sa subárvore direita em pré-ordem
+void preOrdem(arvore raiz)
+{
+    if (raiz != NULL)
+    {
+        printf("%d \n", raiz->chave);
+        preOrdem(raiz->esquerdo);
+        preOrdem(raiz->direito);
+    }
+}
+
+// Teste de execução
 int main(int argc, char const *argv[])
 {
     arvore minhaArvore;
+    
     printf("Tamanho: %d \n", tamanho(minhaArvore));
     printf("Altura: %d \n", altura(minhaArvore));
+
+    preOrdem(minhaArvore);
 
     return 0;
 }
