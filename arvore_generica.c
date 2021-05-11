@@ -123,6 +123,20 @@ int profundidade(arvore raiz)
     }
 }
 
+int profundidadeSemRecursao(arvore raiz)
+{
+    int profundidade = 0;
+    if (raiz != NULL)
+    {
+        while (raiz->pai != NULL)
+        {
+            profundidade++;
+            raiz = raiz->pai;
+        }
+    }
+    return profundidade;
+}
+
 int main(int argc, char const *argv[])
 {
     /* code */
