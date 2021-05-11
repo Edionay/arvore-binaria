@@ -59,7 +59,7 @@ void preOrdem(arvore raiz)
 
 // 1. Percorrer sua subárvore esquerda em em-ordem
 // 2. Visitar a raiz
-// 3. Visitar a subárvore direita em em-ordem
+// 3. Percorrer sua subárvore direita em em-ordem
 void emOrdem(arvore raiz)
 {
     if (raiz != NULL)
@@ -67,6 +67,19 @@ void emOrdem(arvore raiz)
         emOrdem(raiz->esquerdo);
         printf("%d \n", raiz->chave);
         emOrdem(raiz->direito);
+    }
+}
+
+// 1. Percorrer sua subárvore esquerda em pós-ordem
+// 2. Percorrer sua subárvore direita em pós-ordem
+// 3. Visitar a raiz
+void posOrdem(arvore raiz)
+{
+    if (raiz != NULL)
+    {
+        posOrdem(raiz->esquerdo);
+        posOrdem(raiz->direito);
+        printf("%d \n", raiz->chave);
     }
 }
 
