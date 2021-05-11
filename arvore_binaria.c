@@ -45,8 +45,8 @@ int altura(arvore raiz)
 }
 
 // 1. Visitar a raiz
-// 2. Percorrer sua sbárvore esquerda em pré-ordem
-// 3. Visitar sa subárvore direita em pré-ordem
+// 2. Percorrer sua subárvore esquerda em pré-ordem
+// 3. Visitar a subárvore direita em pré-ordem
 void preOrdem(arvore raiz)
 {
     if (raiz != NULL)
@@ -57,15 +57,29 @@ void preOrdem(arvore raiz)
     }
 }
 
+// 1. Percorrer sua subárvore esquerda em em-ordem
+// 2. Visitar a raiz
+// 3. Visitar a subárvore direita em em-ordem
+void emOrdem(arvore raiz)
+{
+    if (raiz != NULL)
+    {
+        emOrdem(raiz->esquerdo);
+        printf("%d \n", raiz->chave);
+        emOrdem(raiz->direito);
+    }
+}
+
 // Teste de execução
 int main(int argc, char const *argv[])
 {
     arvore minhaArvore;
-    
+
     printf("Tamanho: %d \n", tamanho(minhaArvore));
     printf("Altura: %d \n", altura(minhaArvore));
 
     preOrdem(minhaArvore);
+    emOrdem(minhaArvore);
 
     return 0;
 }
