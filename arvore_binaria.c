@@ -23,6 +23,9 @@ int tamanho(arvore raiz)
 }
 
 // Complexidade de tempo Θ(n) e de espaço Θ(h)
+// Pior caso Θ(n)
+// Em média Θ√n
+// Melhor caso Θ(ln n)
 int altura(arvore raiz)
 {
     if (raiz == NULL)
@@ -93,6 +96,7 @@ int main(int argc, char const *argv[])
 
     preOrdem(minhaArvore);
     emOrdem(minhaArvore);
+    posOrdem(minhaArvore);
 
     return 0;
 }
