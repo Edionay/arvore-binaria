@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct registro
 {
@@ -8,6 +9,26 @@ typedef struct registro
 } celula;
 
 typedef celula *arvore;
+
+arvore construirArvore(int chave)
+{
+	arvore raiz;
+	raiz = (arvore)malloc(sizeof(celula));
+	raiz->esquerdo = NULL;
+	raiz->chave = chave;
+	raiz->direito = NULL;
+	return raiz;
+}
+
+arvore novoNo(int chave)
+{
+	arvore raiz;
+	raiz = malloc(sizeof(celula));
+	raiz->esquerdo = NULL;
+	raiz->chave = chave;
+	raiz->direito = NULL;
+	return raiz;
+}
 
 // Navega até o nó mais à esquerda da árvore
 celula *menorChave(arvore raiz)
@@ -48,7 +69,7 @@ arvore busca(arvore raiz, int chave)
 	else
 	{
 		return busca(raiz->direito, chave);
-	}	
+	}
 }
 
 arvore inserir(arvore raiz, celula *novoNo)
@@ -65,19 +86,27 @@ arvore inserir(arvore raiz, celula *novoNo)
 	{
 		raiz->direito = inserir(raiz->direito, novoNo);
 	}
-	return raiz;	
+	return raiz;
 }
 
 // Teste de execução
 int main(int argc, char const *argv[])
 {
-    arvore minhaArvore;
-
+	arvore minhaArvore = construirArvore(10);
+	arvore no = novoNo(15);
+	inserir(minhaArvore, no);
+	no = novoNo(20);
+	inserir(minhaArvore, no);
+	no = novoNo(5);
+	inserir(minhaArvore, no);
+	no = novoNo(25);
+	inserir(minhaArvore, no);
 	celula *menorCelula = menorChave(minhaArvore);
+	celula *maiorCelula = maiorChave(minhaArvore);
 
-    // printf("Menor chave: %d \n", &menorCelula->chave);
+	printf("Menor chave: %d \n", menorCelula->chave);
+	printf("Maior chave: %d \n", maiorCelula->chave);
 
-    printf("Sem erros!");
-
-    return 0;
+	printf("Sem erros!");
+	return 0;
 }
