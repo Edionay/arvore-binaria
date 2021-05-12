@@ -35,6 +35,22 @@ celula *maiorChave(arvore raiz)
 	}
 }
 
+arvore busca(arvore raiz, int chave)
+{
+	if (raiz == NULL || raiz->chave == chave)
+	{
+		return raiz;
+	}
+	if (raiz->chave > chave)
+	{
+		return busca(raiz->esquerdo, chave);
+	}
+	else
+	{
+		return busca(raiz->direito, chave);
+	}	
+}
+
 // Teste de execução
 int main(int argc, char const *argv[])
 {
