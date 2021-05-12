@@ -51,6 +51,23 @@ arvore busca(arvore raiz, int chave)
 	}	
 }
 
+arvore inserir(arvore raiz, celula *novoNo)
+{
+	if (raiz == NULL)
+	{
+		return novoNo;
+	}
+	if (raiz->chave > novoNo->chave)
+	{
+		raiz->esquerdo = inserir(raiz->esquerdo, novoNo);
+	}
+	else
+	{
+		raiz->direito = inserir(raiz->direito, novoNo);
+	}
+	return raiz;	
+}
+
 // Teste de execução
 int main(int argc, char const *argv[])
 {
