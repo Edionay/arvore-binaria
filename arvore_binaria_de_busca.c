@@ -9,6 +9,7 @@ typedef struct registro
 
 typedef celula *arvore;
 
+// Navega até o nó mais à esquerda da árvore
 celula *menorChave(arvore raiz)
 {
 	if (raiz->esquerdo == NULL)
@@ -18,6 +19,19 @@ celula *menorChave(arvore raiz)
 	else
 	{
 		return menorChave(raiz->esquerdo);
+	}
+}
+
+// Navega até o nó mais à direita da árvore
+celula *maiorChave(arvore raiz)
+{
+	if (raiz->direito == NULL)
+	{
+		return raiz;
+	}
+	else
+	{
+		return maiorChave(raiz->direito);
 	}
 }
 
