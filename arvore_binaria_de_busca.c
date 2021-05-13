@@ -89,6 +89,33 @@ arvore inserir(arvore raiz, celula *novoNo)
 	return raiz;
 }
 
+arvore removerRaiz(arvore raiz)
+{
+	celula *paiTemporario, *filhoTemporario;
+	if (raiz->esquerdo == NULL)
+	{
+		filhoTemporario = raiz->direito;
+		free(raiz);
+		return filhoTemporario;
+	}
+
+	paiTemporario = raiz;
+	filhoTemporario = raiz->esquerdo;
+	while (filhoTemporario->direito != NULL)
+	{
+		paiTemporario = filhoTemporario;
+		filhoTemporario = filhoTemporario-> direito;
+	}
+	if (paiTemporario != raiz)
+	{
+		paiTemporario->esquerdo = filhoTemporario->esquerdo;
+		filhoTemporario->esquerdo = raiz->esquerdo;
+	}
+	filhoTemporario->direito = raiz->direito;
+	free(raiz);
+	return filhoTemporario;
+}
+
 // Teste de execução
 int main(int argc, char const *argv[])
 {
